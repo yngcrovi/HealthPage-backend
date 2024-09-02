@@ -29,8 +29,6 @@ class UserService(PostgreSQLRepository):
         await self.update_data(upd_id, upd_data)
    
 
-    
-
 user_service = UserService()
 
 
