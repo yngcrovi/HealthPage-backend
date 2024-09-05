@@ -6,8 +6,8 @@ import asyncio
 
 class UserSaltService(PostgreSQLRepository): 
 
-    def __init__(self) -> None:
-        self.table = UserSalt
+    def __init__(self, table) -> None:
+        self.table = table
 
     async def select_salt(self, filter_data: dict) -> UserSaltGetDTO:
         result = await self.select_data(filter_data)
@@ -19,4 +19,4 @@ class UserSaltService(PostgreSQLRepository):
         value = await self.insert_data(insert_data)
         return value
 
-user_salt_service = UserSaltService()
+user_salt_service = UserSaltService(UserSalt)

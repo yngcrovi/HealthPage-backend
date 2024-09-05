@@ -4,8 +4,8 @@ from src.repository.dto import IdGetDTO
 
 class ExerciseService(PostgreSQLRepository): 
 
-    def __init__(self) -> None:
-        self.table = Exercise
+    def __init__(self, table) -> None:
+        self.table = table
 
     async def select_id_exercise(self, filter_data: dict) -> list[IdGetDTO] | IdGetDTO | None:
         result = await self.select_data(filter_data)
@@ -13,4 +13,4 @@ class ExerciseService(PostgreSQLRepository):
         result_dto = self.get_dto_form(IdGetDTO, res)
         return result_dto.id
 
-exercise_service = ExerciseService()
+exercise_service = ExerciseService(Exercise)

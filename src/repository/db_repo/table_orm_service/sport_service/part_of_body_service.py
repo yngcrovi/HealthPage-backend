@@ -5,8 +5,8 @@ from src.repository.dto import IdGetDTO
 
 class PartOfBodyService(PostgreSQLRepository): 
 
-    def __init__(self) -> None:
-        self.table = PartOfBody
+    def __init__(self, table) -> None:
+        self.table = table
 
     async def select_id_pob(self, filter_data: dict) -> list[IdGetDTO] | IdGetDTO | None:
         result = await self.select_data(filter_data)
@@ -14,4 +14,4 @@ class PartOfBodyService(PostgreSQLRepository):
         result_dto = self.get_dto_form(IdGetDTO, res)
         return result_dto.id
 
-part_of_body_service = PartOfBodyService()
+part_of_body_service = PartOfBodyService(PartOfBody)

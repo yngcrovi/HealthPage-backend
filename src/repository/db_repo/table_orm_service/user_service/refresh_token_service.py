@@ -6,8 +6,8 @@ import asyncio
 
 class RefreshTokenService(PostgreSQLRepository): 
 
-    def __init__(self):
-        self.table = RefreshToken
+    def __init__(self, table):
+        self.table = table
 
     async def select_token(self, filter_data: dict) -> TokenGetDTO:
         result = await self.select_data(filter_data)
@@ -19,4 +19,4 @@ class RefreshTokenService(PostgreSQLRepository):
         value = await self.insert_data(insert_data)
         return value
 
-refresh_token_service = RefreshTokenService()
+refresh_token_service = RefreshTokenService(RefreshToken)

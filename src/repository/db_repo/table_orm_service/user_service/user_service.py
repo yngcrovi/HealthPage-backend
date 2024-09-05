@@ -4,10 +4,11 @@ import asyncio
 from src.repository.dto import UserGetDTO, UserPostDTO, UserParamDTO
 from pydantic import BaseModel
 
+
 class UserService(PostgreSQLRepository): 
 
-    def __init__(self) -> None:
-        self.table = User
+    def __init__(self, table) -> None:
+        self.table = table
 
     async def select_user(self, filter_data: dict) -> list[UserPostDTO] | UserPostDTO | None:
         result = await self.select_data(filter_data)
@@ -29,7 +30,7 @@ class UserService(PostgreSQLRepository):
         await self.update_data(upd_id, upd_data)
    
 
-user_service = UserService()
+user_service = UserService(User)
 
 
 

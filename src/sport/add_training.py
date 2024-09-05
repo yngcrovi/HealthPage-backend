@@ -9,8 +9,6 @@ from src.repository.db_repo.table_orm_service.sport_service.training_service imp
 from src.repository.db_repo.table_orm_service.sport_service.addit_info_training_service import addit_info_training_service
 from src.repository.db_repo.table_orm_service.sport_service.load_type_service import load_type_service
 from src.repository.db_repo.table_orm_service.sport_service.exercise_service import exercise_service
-from src.repository.db_repo.table_orm_service.sport_service.part_of_body_service import part_of_body_service
-from src.repository.db_repo.table_orm_service.sport_service.part_of_muscle_service import part_of_muscle_service
 
 route = APIRouter(
     prefix='/add_training',
@@ -19,8 +17,6 @@ route = APIRouter(
 
 class TrainingData(BaseModel):
     load_type: str
-    part_of_body: list[str]
-    part_of_muscle: list[str]
     exercise: list[str]
     type_weight: list[str]
     weight: list[float]
@@ -64,9 +60,7 @@ async def add_training(
         for j in training_data['number_of_repetitions'][i]:
             training['number_of_repetitions'] = j
             training['approach_numbers'] = i+1
-            print(training)
             await training_service.insert_training(training)
-    print(training_data)
     response = JSONResponse(
         content={
             'detail': 'ok'

@@ -4,11 +4,11 @@ from src.repository.dto import UserGetDTO, UserPostDTO, UserParamDTO
 
 class TrainingService(AdditionalInfoTrainingService): 
 
-    def __init__(self) -> None:
-        self.table = Training
+    def __init__(self, table) -> None:
+        self.table = table
 
     async def insert_training(self, insert_data: dict | list) -> Training:
         value = await self.insert_data(insert_data)
         return value  
     
-training_service = TrainingService()
+training_service = TrainingService(Training)
