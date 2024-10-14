@@ -1,7 +1,6 @@
 from fastapi_filter.contrib.sqlalchemy import Filter
 from pydantic import Field
 from typing import Optional
-from src.repository.tables.tables_orm import Test
 
 class TestFilter(Filter):
     id__gte: Optional[int] = Field(alias="id")

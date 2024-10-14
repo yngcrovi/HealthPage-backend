@@ -4,11 +4,11 @@ from fastapi.responses import JSONResponse
 from fastapi_cache.decorator import cache
 import datetime
 from typing import Annotated
-from src.auth_user.token import decode_user_token_for_data
-from src.repository.db_repo.table_orm_service.sport_service.training_service import training_service
-from src.repository.db_repo.table_orm_service.sport_service.addit_info_training_service import addit_info_training_service
-from src.repository.db_repo.table_orm_service.sport_service.load_type_service import load_type_service
-from src.repository.db_repo.table_orm_service.sport_service.exercise_service import exercise_service
+from src.auth_user.token.token_decode import decode_user_token_for_data
+from src.repository.service.sport_service.training_service import training_service
+from src.repository.service.sport_service.addit_info_training_service import addit_info_training_service
+from src.repository.service.sport_service.load_type_service import load_type_service
+from src.repository.service.sport_service.exercise_service import exercise_service
 
 route = APIRouter(
     prefix='/add_training',

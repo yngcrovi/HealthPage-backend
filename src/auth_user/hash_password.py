@@ -12,10 +12,3 @@ def compare_hesh_password(password: str, salt: bytes, compare_password: str) -> 
         return True
     else: 
         return False
-    
-
-hesh = make_hesh_password('string')
-
-
-# compare = compare_hesh_password(hesh['key'],  hesh['salt'], 'string21')
-# print(compare)
