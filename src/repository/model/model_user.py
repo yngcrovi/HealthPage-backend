@@ -10,6 +10,7 @@ class SexType(Enum):
 
 class UserModel(Base):
     __tablename__ = 'user'
+    __table_args__ = {'schema': 'user'} 
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     username: Mapped[str] = mapped_column(nullable=False, unique=True)
@@ -27,9 +28,10 @@ class UserModel(Base):
 
 class RefreshTokenModel(Base): 
     __tablename__ = 'refresh_token'
+    __table_args__ = {'schema': 'user'} 
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    id_username: Mapped[int] = mapped_column(ForeignKey('user.id'))
+    id_username: Mapped[int] = mapped_column(ForeignKey('user.user.id'))
     refresh_token: Mapped[str]
     datetime_create: Mapped[datetime] = mapped_column(default=datetime.now, onupdate=datetime.now)
 
