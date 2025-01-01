@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Cookie
 from fastapi.responses import JSONResponse
 from typing import Annotated
 from src.repository.service.user_service.user_service import user_service
-from src.auth_user.token.token_decode import decode_user_token_for_data
+from src.auth.token_decode import decode_user_token_for_data
 from pydantic import BaseModel
 
 route = APIRouter(

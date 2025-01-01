@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from fastapi_cache.decorator import cache
 import datetime
 from typing import Annotated
-from src.auth_user.token.token_decode import decode_user_token_for_data
+from src.auth.token_decode import decode_user_token_for_data
 from src.repository.service.sport_service.training_service import training_service
 from src.repository.service.sport_service.addit_info_training_service import addit_info_training_service
 from src.repository.service.sport_service.load_type_service import load_type_service

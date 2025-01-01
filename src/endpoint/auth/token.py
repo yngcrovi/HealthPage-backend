@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Cookie, HTTPException, status
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from src.auth_user.token.token_decode import decode_token
-from src.auth_user.token.token_factory import get_access_token
+from src.auth.token_decode import decode_token
+from src.auth.token_factory import get_access_token
 from src.redis.redis import redis
 from src.repository.service.user_service.refresh_token_service import refresh_token_service
 from dotenv import load_dotenv

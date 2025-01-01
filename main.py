@@ -3,12 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 # from fastapi_cache import FastAPICache
 # from fastapi_cache.backends.redis import RedisBackend
 from redis import asyncio as aioredis
-from src.sport.add_training import route as route_add_training
+from src.endpoint.sport.add_training import route as add_training
 from src.redis.redis import redis
-from src.auth_user.auth_endpoint.registratoin import route as registration
-from src.auth_user.auth_endpoint.login_out import route as login_out
-from src.data_user.param_user import route as param_user
-from src.auth_user.token.token_endpoint import route as token
+from src.endpoint.auth.registratoin import route as registration
+from src.endpoint.auth.login_out import route as login_out
+from endpoint.user.param_user import route as param_user
+from endpoint.auth.token import route as token
 
 app = FastAPI()
 
@@ -34,7 +34,7 @@ app.add_middleware(
     allow_headers = ['*'],
 )
 
-app.include_router(route_add_training)
+app.include_router(add_training)
 app.include_router(registration)
 app.include_router(login_out)
 app.include_router(param_user)
