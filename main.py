@@ -7,8 +7,8 @@ from src.endpoint.sport.add_training import route as add_training
 from src.redis.redis import redis
 from src.endpoint.auth.registratoin import route as registration
 from src.endpoint.auth.login_out import route as login_out
-from endpoint.user.param_user import route as param_user
-from endpoint.auth.token import route as token
+from src.endpoint.user.param_user import route as param_user
+from src.endpoint.auth.token import route as token
 
 app = FastAPI()
 

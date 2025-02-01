@@ -34,6 +34,8 @@ class PartOfMuscleModel(Base):
     id_part_of_body: Mapped[int] = mapped_column(nullable=False)
     part_of_muscle: Mapped[str] = mapped_column(nullable=False)
 
+    part_of_body = relationship('part_of_body')
+
     repr_cols_num = 3
 
 class LoadTypeModel(Base):

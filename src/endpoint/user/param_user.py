@@ -6,7 +6,7 @@ from src.auth.token_decode import decode_user_token_for_data
 from pydantic import BaseModel
 
 route = APIRouter(
-    tags=['Params_user']
+    tags=['Params user']
 )
 
 class NewParams(BaseModel):
@@ -18,12 +18,10 @@ async def get_params(
     user_data: Annotated[dict, Depends(decode_user_token_for_data)]
 ) -> JSONResponse:
     user_param = await user_service.select_param(user_data)
-    weight = user_param.weight
-    height = user_param.height
     response = JSONResponse(
         content={
-            'weight': weight,
-            'height': height,
+            'weight': user_param.weight,
+            'height': user_param.height,
         },
         status_code=200
     )

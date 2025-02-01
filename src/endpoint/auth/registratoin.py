@@ -28,9 +28,8 @@ class UserRegistration(BaseModel):
     sex: SexType
     exp_refresh: bool
 
-async def user_exists(user: UserRegistration):
-    username = {'username': user.username}
-    check_exist = await user_service.select_user(username)
+async def user_exists(user_data: UserRegistration):
+    check_exist = await user_service.select_user({'username': user_data.username})
     if check_exist:
         #Поменять код ошибки
         raise HTTPException(
@@ -38,7 +37,7 @@ async def user_exists(user: UserRegistration):
             detail="User exists",
         )
     else: 
-        return user.model_dump()
+        return user_data.model_dump()
 
 @route.post("")
 async def registration(
@@ -46,10 +45,10 @@ async def registration(
 ) -> JSONResponse:
     key_salt = make_hesh_password(user_data['password'])
     user_data['hash_password'] = key_salt['key']
+    user_data['salt'] = key_salt['salt']
     exp_refresh_token = user_data['exp_refresh']
     del user_data['password']
     del user_data['exp_refresh']
-    user_data['salt'] = key_salt['salt']
     id_username = await user_service.insert_user(user_data)
     user_data['id'] = id_username.id
     access_token = get_access_token(user_data)
