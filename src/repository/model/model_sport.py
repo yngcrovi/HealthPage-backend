@@ -31,10 +31,11 @@ class PartOfMuscleModel(Base):
     __table_args__ = {'schema': 'sport'} 
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    id_part_of_body: Mapped[int] = mapped_column(nullable=False)
+    id_part_of_body: Mapped[int] = mapped_column(nullable=False) 
     part_of_muscle: Mapped[str] = mapped_column(nullable=False)
-
-    part_of_body = relationship('part_of_body')
+    
+    #TODO: Выяснить, для чего нужен и почему при таком сценарии ошибка
+    # part_of_body = relationship('sport.part_of_body')
 
     repr_cols_num = 3
 

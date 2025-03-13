@@ -9,6 +9,7 @@ from src.endpoint.auth.registratoin import route as registration
 from src.endpoint.auth.login_out import route as login_out
 from src.endpoint.user.param_user import route as param_user
 from src.endpoint.auth.token import route as token
+from src.endpoint.sport.params import route as sport_params
 
 app = FastAPI()
 
@@ -39,3 +40,4 @@ app.include_router(registration)
 app.include_router(login_out)
 app.include_router(param_user)
 app.include_router(token)
+app.include_router(sport_params)
