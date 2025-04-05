@@ -24,3 +24,7 @@ class TokenGetDTO(BaseModel):
 
 class IdGetDTO(BaseModel):
     id: int
+
+class GetLoadTypeDTO(BaseModel):
+    load_type: str
+    username_id: int

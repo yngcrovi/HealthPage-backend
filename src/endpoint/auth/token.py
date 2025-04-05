@@ -49,7 +49,7 @@ async def refresh_access(
         refresh_from_db = refresh_from_db.decode('utf-8')
         print('В кэше', refresh_from_db)
     else:
-        refresh_from_db = await refresh_token_service.select_token({'id_username': payload['id']})
+        refresh_from_db = await refresh_token_service.select_token({'username_id': payload['id']})
         refresh_from_db = refresh_from_db.model_dump()
         refresh_from_db = refresh_from_db['refresh_token']
     if not refresh_token['refresh_token'] == refresh_from_db:

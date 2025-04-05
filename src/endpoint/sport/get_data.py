@@ -15,7 +15,6 @@ route = APIRouter(
 async def get_sport_data(
     user_data: Annotated[dict, Depends(decode_user_token_for_data)]
 ) -> JSONResponse:
-
     response = JSONResponse(
         content={
         },

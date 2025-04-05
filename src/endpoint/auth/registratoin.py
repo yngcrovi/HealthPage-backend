@@ -53,7 +53,7 @@ async def registration(
     user_data['id'] = id_username.id
     access_token = get_access_token(user_data)
     refresh_token = get_refresh_token(user_data, exp_refresh_token)
-    await refresh_token_service.insert_refresh_token({'id_username': id_username.id, 'refresh_token': refresh_token})
+    await refresh_token_service.insert_refresh_token({'username_id': id_username.id, 'refresh_token': refresh_token})
     response = JSONResponse(
         content = {
             'refresh_token': f'{refresh_token}',
